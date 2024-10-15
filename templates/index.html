@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>final </title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+	</head>
+	<body>
+		<div class="login-form">
+			<form id="login_form" action="main.php" method="post">
+				<h1>登入</h1>
+				<div class="textb">
+					<input type="text" name="acc" required id="login_acc">
+					<div class="placeholder">帳號</div>
+				</div>
+				<div class="textb">
+					<input type="password" name="pss" required id="login_pss">
+					<div class="placeholder">密碼</div>
+					<div class="show-password fas fa-eye-slash"></div>
+				</div>
+				<button class="btn fas fa-arrow-right" id="bt" onclick="submitForm()" disabled type="button"></button>
+			</form>
+			<center>
+				<button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#exampleModalCenter">
+					創建帳號
+				</button>
+			</center>
+			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">創建帳號</h5>
+							<button id="close_btn" type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="form-group">
+									<label>帳號</label>
+									<input class="form-control" name="acc" id="enroll_acc" placeholder="輸入帳號">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputPassword1">密碼</label>
+									<input type="password" class="form-control" id="enroll_pss" name="pss" placeholder="輸入密碼">
+								</div>
+								<button type="button" class="btn btn-primary" id="enroll">送出</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<style>
+	input[type=password]::-ms-reveal,
+	input[type=password]::-ms-clear {
+		display: none;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: "微軟正黑體", sans-serif;
+	}
+	body {
+		background: url("/static/images/aa68b9419cb9c664559259f150ca6009.jpg") no-repeat center;
+		background-size: cover;
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.login-form {
+		width: calc(100% - 20px);
+		max-width: 500px;
+		background-color: rgba(255, 255, 255, 0.6);
+		padding: 50px 40px;
+	}
+	.login-form h1 {
+		text-align: center;
+		margin: 48px 0;
+		font-size: 40px;
+		font-weight: bold;
+		color: #111;
+	}
+	.textb {
+		margin-bottom: 12px;
+		position: relative;
+	}
+	.textb input {
+		width: 100%;
+		height: 70px;
+		border: none;
+		background-color: #ededed;
+		border-radius: 4px;
+		color: #333;
+		font-size: 18px;
+		font-weight: 700;
+		padding: 14px 60px 0 10px;
+	}
+	.placeholder {
+		text-transform: uppercase;
+		font-size: 14px;
+		font-weight: 700;
+		position: absolute;
+		line-height: 70px;
+		top: 0;
+		left: 20px;
+		color: #9d9d9d;
+		user-select: none;
+		pointer-events: none;
+	}
+	.show-password {
+		position: absolute;
+		right: 20px;
+		line-height: 70px;
+		color: #9d9d9d;
+		font-size: 22px;
+		cursor: pointer;
+	}
+	.textb input:focus ~ .placeholder,
+	.textb input:valid ~ .placeholder {
+		left: 10px;
+		top: -16px;
+	}
+	#bt {
+		display: block;
+		width: 100px;
+		height: 100px;
+		margin: 40px auto;
+		background-color: #bc252a;
+		color: #fff;
+		font-size: 40px;
+		border: none;
+		border-radius: 30px;
+		cursor: pointer;
+		transition: .3s linear;
+	}
+	#bt:hover {
+		opacity: .85;
+	}
+	.login-form a {
+		display: block;
+		text-align: center;
+		text-decoration: none;
+		font-size: 16px;
+		color: #555;
+		text-transform: uppercase;
+		font-weight: 500;
+		margin-bottom: 8px;
+		transition: .2s linear;
+	}
+	.login-form a:hover {
+		color: #111;
+	}
+	#bt:disabled {
+		background-color: transparent;
+		color: black;
+		border: 2px solid;
+	}
+</style>
+<script>
+	var fields = document.querySelectorAll(".textb input");
+	var btn = document.querySelector(".btn");
+	function check() {
+		if (fields[0].value != "" && fields[1].value != "")
+			btn.disabled = false;
+		else
+			btn.disabled = true;
+	}
+	fields[0].addEventListener("keyup", check);
+	fields[1].addEventListener("keyup", check);
+	document.querySelector(".show-password").addEventListener("click", function () {
+		if (this.classList[2] == "fa-eye-slash") {
+			this.classList.remove("fa-eye-slash");
+			this.classList.add("fa-eye");
+			fields[1].type = "text";
+		} else {
+			this.classList.remove("fa-eye");
+			this.classList.add("fa-eye-slash");
+			fields[1].type = "password";
+		}
+	});
+	$("#enroll").click(function(){
+		var acc = $("#enroll_acc").val();
+		var pss = $("#enroll_pss").val();    
+		if(acc=="" || pss == "")
+		{
+			alert("帳號或密碼不能為空白");
+		}
+		else
+		{
+			$.ajax({
+				type: "POST", 
+				url: "register", 
+				data: JSON.stringify({ acc: acc, pss: pss }),  // 將資料轉換為 JSON 格式,
+				success: function(response) {
+					alert(response)
+				},
+			error: function(error) {
+				if (error.status === 400) {
+					alert(error.responseText);
+				} 
+			}
+			});
+			$("#enroll_acc").val("");
+			$("#enroll_pss").val("");
+			$("#close_btn").click();
+		}
+	});
+	function submitForm() {
+    	// 取得帳號和密碼的值
+		var acc = $('#login_acc').val();
+		var pss = $('#login_pss').val();
+
+		// 發送 AJAX POST 請求到 Flask 後端
+		$.ajax({
+			url: '/login',  // 對應 Flask 中的路由
+			type: 'POST',
+			contentType: 'application/json',
+
+			data: JSON.stringify({ acc: acc, pss: pss }),  // 將資料轉換為 JSON 格式
+			success: function(response) {
+				// 根據後端返回的結果處理
+				if (response.redirect) {
+					window.location.href = response.redirect;
+				}
+			},
+			error: function(error) {
+				console.log(error);
+				alert('請求失敗');
+			}
+		});
+}
+</script>
