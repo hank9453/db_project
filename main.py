@@ -8,10 +8,16 @@ app.secret_key = '527852785278'  # 設置一個密鑰來加密 session
 @app.route('/')
 def home():
     return render_template('index.html')
+@app.route('/admin/new_products', methods=['POST'])
+def addpro():
+    data = json.loads(request.get_data())
+    print(data)
 @app.route('/admin/products')
 def products():
     return render_template('admin/products.html')
-
+@app.route('/admin/add_products')
+def add_products():
+    return render_template('admin/add-product.html')
 @app.route('/admin/Categories', methods=['POST'])
 def addcata():
     data = json.loads(request.get_data())
