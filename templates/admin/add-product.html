@@ -68,7 +68,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="">
+              <a class="nav-link active" href="products">
                 <i class="fas fa-shopping-cart"></i> Products
               </a>
             </li>
@@ -89,7 +89,6 @@
           <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="" class="tm-edit-product-form">
                   <div class="form-group mb-3">
                     <label
                       for="name"
@@ -111,6 +110,7 @@
                     <textarea
                       class="form-control validate"
                       rows="3"
+                      id="description"
                       required
                     ></textarea>
                   </div>
@@ -134,7 +134,7 @@
                           <input
                             id="expire_date"
                             name="expire_date"
-                            type="text"
+                            type="number"
                             class="form-control validate"
                             data-large-mode="true"
                           />
@@ -147,7 +147,7 @@
                           <input
                             id="stock"
                             name="stock"
-                            type="text"
+                            type="number"
                             class="form-control validate"
                             required
                           />
@@ -181,6 +181,7 @@
                       reader.onload = function(e) {
                         const img = document.createElement('img');
                         img.src = e.target.result;
+                        img.id = 'previewImg';
                         img.className = 'img-fluid'; // Bootstrap class for responsive images
                         img.style.maxWidth = '100%'; // Ensure the image fits within the div
                         img.style.maxHeight = '100%'; // Ensure the image fits within the div
@@ -196,9 +197,8 @@
 
               </div>
               <div class="col-12">
-                <button type="submit"  onclick="addpro()"  class="btn btn-primary btn-block text-uppercase">新增商品</button>
+                <button  onclick="addpro()"  class="btn btn-primary btn-block text-uppercase">新增商品</button>
               </div>
-            </form>
             </div>
           </div>
         </div>
@@ -236,13 +236,14 @@
       }
       function addpro() {
     	// 取得帳號和密碼的值
-            var file = document.getElementById('fileInput').files[0];
+            var previewImg = document.getElementById('previewImg');
+            var previewImgSrc = previewImg ? previewImg.src : null;
             var acc = document.getElementById('name').value;
             var des = document.getElementById('description').value;
             var cate = document.getElementById('category').value;
             var price = document.getElementById('expire_date').value;
             var stock = document.getElementById('stock').value;
-
+            
             // 發送 AJAX POST 請求到 Flask 後端
             $.ajax({
               url: 'new_products',  // 對應 Flask 中的路由
@@ -250,7 +251,7 @@
               contentType: 'application/json',
 
               data: JSON.stringify({
-                file: file,
+                file: previewImgSrc,
                 acc: acc,
                 des: des,
                 cate: cate,
@@ -258,8 +259,9 @@
                 stock: stock
               }),
               success: function(response) {
-                console.log(response);
-                alert('新增成功');
+                if (response.redirect) {
+                  window.location.href = response.redirect;
+                }
               },
               error: function(error) {
                 console.log(error);
