@@ -8,6 +8,40 @@ app.secret_key = '527852785278'  # 設置一個密鑰來加密 session
 @app.route('/')
 def home():
     return render_template('index.html')
+
+
+@app.route('/Search_InStock_Product', methods=['POST'])
+def Search_InStock_Product():
+    con = sqlite3.connect('db.db')
+    data = json.loads(request.get_data())
+    cursor = con.cursor()
+    try :
+        cursor.execute("select Products.id, Products.name, price, image, Type.name from Products join Type on Products.category = Type.id where stock_num > 0 and Products.name like ? order by Type.name", ('%' + data['keyword'] + '%',))
+        result = cursor.fetchall()
+        con.close()
+        return jsonify(result)
+    except Exception as e:
+        print(e)
+        return 'error', 400
+
+
+
+
+@app.route('/Load_InStock_Product', methods=['GET'])
+def Load_InStock_Product():
+    con = sqlite3.connect('db.db')
+    cursor = con.cursor()
+    try :
+        cursor.execute("select Products.id, Products.name, price, image, Type.name from Products join Type on Products.category = Type.id where stock_num > 0 order by Type.name")
+        result = cursor.fetchall()
+        con.close()
+        return jsonify(result)
+    except Exception as e:
+        print(e)
+        return 'error', 400
+
+
+
 @app.route('/admin/editpro')
 def editpro():
     return render_template('admin/edit-product.html')
@@ -64,7 +98,7 @@ def loadpro():
     cursor = con.cursor()
 
     try :
-        cursor.execute("select Products.id,Products.name, price, stock_num, Type.name from Products join Type on Products.category = Type.id")
+        cursor.execute("select Products.id, Products.name, price, stock_num, Type.name from Products join Type on Products.category = Type.id order by Type.name")
         result = cursor.fetchall()
         con.close()
         return jsonify(result)

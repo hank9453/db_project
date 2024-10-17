@@ -37,6 +37,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
    </head>
    <body>
+      
       <!-- banner bg main start -->
       <div class="banner_bg_main">
          <!-- header top section start -->
@@ -61,25 +62,24 @@
                <div class="containt_main d-flex justify-content-between align-items-center">
                   <!-- Another variation with a button -->
                   <div class="input-group">
-                     <input type="text" class="form-control" placeholder="Search this blog">
-                     <div class="input-group-append">
+                     <input id="keyword" type="text" class="form-control" placeholder="輸入商品名稱" >
+                     <div class="input-group-append" onclick="Search()">
                         <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
                         <i class="fa fa-search"></i>
                         </button>
                      </div>
                   </div>
                   <div class="login_menu ml-3">
-                     <ul class="d-flex mb-0">
-                        <li >
+                      <ul class="d-flex mb-0">
+                        <li class="mr-3">
                            <a href="#">
-                             
-                              <span class="padding_10"> <i class="fa fa-shopping-cart" aria-hidden="true"> </i>Cart</span>
+                            <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
                            </a>
                         </li>
-                        <li class="d-flex align-items-center">
+                        <li>
                            <a href="#">
-                              <i class="fa fa-user" aria-hidden="true"></i>
-                              <span class="padding_10">Login</span>
+                           <a href="#">
+                              <i class="fa fa-user fa-2x" aria-hidden="true"></i>
                            </a>
                         </li>
                      </ul>
@@ -87,146 +87,12 @@
                </div>
             </div>
          </div>
-
-      <div class="jewellery_section">
-         <div id="jewellery_main_slider" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-               <div class="carousel-item active">
-                  <div class="container">
-                     <h1 class="fashion_taital">Jewellery Accessories</h1>
-                     <div class="fashion_section_2">
-                        <div class="row">
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Jumkas</h4>
-                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
-                                 <div class="jewellery_img"><img src="images/jhumka-img.png"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Necklaces</h4>
-                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
-                                 <div class="jewellery_img"><img src="images/neklesh-img.png"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Kangans</h4>
-                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
-                                 <div class="jewellery_img"><img src="images/kangan-img.png"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="carousel-item">
-                  <div class="container">
-                     <h1 class="fashion_taital">Jewellery Accessories</h1>
-                     <div class="fashion_section_2">
-                        <div class="row">
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Jumkas</h4>
-                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
-                                 <div class="jewellery_img"><img src="images/jhumka-img.png"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Necklaces</h4>
-                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
-                                 <div class="jewellery_img"><img src="images/neklesh-img.png"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Kangans</h4>
-                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
-                                 <div class="jewellery_img"><img src="images/kangan-img.png"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="carousel-item">
-                  <div class="container">
-                     <h1 class="fashion_taital">Jewellery Accessories</h1>
-                     <div class="fashion_section_2">
-                        <div class="row">
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Jumkas</h4>
-                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
-                                 <div class="jewellery_img"><img src="images/jhumka-img.png"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Necklaces</h4>
-                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
-                                 <div class="jewellery_img"><img src="images/neklesh-img.png"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Kangans</h4>
-                                 <p class="price_text">Start Price  <span style="color: #262626;">$ 100</span></p>
-                                 <div class="jewellery_img"><img src="images/kangan-img.png"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="#">See More</a></div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <a class="carousel-control-prev" href="#jewellery_main_slider" role="button" data-slide="prev">
-            <i class="fa fa-angle-left"></i>
-            </a>
-            <a class="carousel-control-next" href="#jewellery_main_slider" role="button" data-slide="next">
-            <i class="fa fa-angle-right"></i>
-            </a>
-         </div>
       </div>
+      <div class="navbar ">
+       </div>
+      <div id="main">
 
+      </div>
       <!-- copyright section end -->
       <!-- Javascript files-->
       <script src="/static/js/jquery.min.js"></script>
@@ -238,13 +104,147 @@
       <script src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="/static/js/custom.js"></script>
       <script>
-         function openNav() {
-           document.getElementById("mySidenav").style.width = "250px";
-         }
-         
-         function closeNav() {
-           document.getElementById("mySidenav").style.width = "0";
-         }
+         loadpro();
+         function loadpro(){
+        $.ajax({
+          url: 'Load_InStock_Product',
+          type: 'GET',
+          contentType: 'application/json', 
+          success: function(response) {
+            var html = '';
+            var productsByCategory = {};
+            for (var i = 0; i < response.length; i++) {
+               var id = response[i][0];
+               var name = response[i][1];
+               var price = response[i][2];
+               var img = response[i][3];
+               var category = response[i][4];
+
+               if (!productsByCategory[category]) {
+               productsByCategory[category] = [];
+               }
+               productsByCategory[category].push([id, name, price, img]);
+            }
+            for (var category in productsByCategory) {
+               var categoryId = category.replace(/\s+/g, '_'); // Replace spaces with underscores for unique IDs
+               html += '<div>';
+               html += '<h1 class="fashion_taital">'+category+'</h1>';
+               html += '</div>';
+               html += '<div id="jewellery_main_slider'+categoryId+'" class="carousel slide" data-ride="carousel" data-interval="false">';
+               html += '<div class="carousel-inner">';
+               var items = productsByCategory[category];
+               for (var j = 0; j < items.length; j += 3) {
+               html += '<div class="carousel-item ' + (j === 0 ? 'active' : '') + '">';
+               html += '<div class="container">';
+               html += '<div class="fashion_section_2">';
+               html += '<div class="row">';
+               for (var k = j; k < j + 3 && k < items.length; k++) {
+                 var product = items[k];
+                 html += '<div class="col-lg-4 col-sm-4">';
+                 html += '<div class="box_main">';
+                 html += '<h4 class="shirt_text">' + product[1] + '</h4>';
+                 html += '<p class="price_text">Start Price <span style="color: #262626;">$ ' + product[2] + '</span></p>';
+                 html += '<div class="jewellery_img"><img src="' + product[3] + '"></img></div>';
+                 html += '<div class="btn_main">';
+                 html += '<div class="buy_bt"><a href="#">加入購物車</a></div>';
+                 html += '</div>';
+                 html += '</div>';
+                 html += '</div>';
+               }
+               html += '</div>';
+               html += '</div>';
+               html += '</div>';
+               html += '</div>';
+               }
+               html += '</div>';
+               html += '<a class="carousel-control-prev" href="#jewellery_main_slider'+categoryId+'"  class = "jewellery_main_slider"role="button" data-slide="prev">';
+               html += '<i class="fa fa-angle-left"></i>';
+               html += '</a>';
+               html += '<a class="carousel-control-next" href="#jewellery_main_slider'+categoryId+'" class="jewellery_main_slider" role="button" data-slide="next">';
+               html += '<i class="fa fa-angle-right"></i>';
+               html += '</a>';
+               html += '</div>';
+            }
+
+            $('#main').html(html);
+            console.log(response);
+          },
+          error: function(error) {
+            console.log(error);
+            alert('請求失敗');
+          }
+        });        
+      }
+      function Search(){
+         var keywords = document.getElementById('keyword').value;
+        $.ajax({
+          url: 'Search_InStock_Product',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ keyword: keywords }),
+          success: function(response) {
+            var html = '';
+            var productsByCategory = {};
+            for (var i = 0; i < response.length; i++) {
+               var id = response[i][0];
+               var name = response[i][1];
+               var price = response[i][2];
+               var img = response[i][3];
+               var category = response[i][4];
+
+               if (!productsByCategory[category]) {
+               productsByCategory[category] = [];
+               }
+               productsByCategory[category].push([id, name, price, img]);
+            }
+            for (var category in productsByCategory) {
+               var categoryId = category.replace(/\s+/g, '_'); // Replace spaces with underscores for unique IDs
+               html += '<div>';
+               html += '<h1 class="fashion_taital">'+category+'</h1>';
+               html += '</div>';
+               html += '<div id="jewellery_main_slider'+categoryId+'" class="carousel slide" data-ride="carousel" data-interval="false">';
+               html += '<div class="carousel-inner">';
+               var items = productsByCategory[category];
+               for (var j = 0; j < items.length; j += 3) {
+               html += '<div class="carousel-item ' + (j === 0 ? 'active' : '') + '">';
+               html += '<div class="container">';
+               html += '<div class="fashion_section_2">';
+               html += '<div class="row">';
+               for (var k = j; k < j + 3 && k < items.length; k++) {
+                 var product = items[k];
+                 html += '<div class="col-lg-4 col-sm-4">';
+                 html += '<div class="box_main">';
+                 html += '<h4 class="shirt_text">' + product[1] + '</h4>';
+                 html += '<p class="price_text">Start Price <span style="color: #262626;">$ ' + product[2] + '</span></p>';
+                 html += '<div class="jewellery_img"><img src="' + product[3] + '"></img></div>';
+                 html += '<div class="btn_main">';
+                 html += '<div class="buy_bt"><a href="#"></a></div>';
+                 html += '</div>';
+                 html += '</div>';
+                 html += '</div>';
+               }
+               html += '</div>';
+               html += '</div>';
+               html += '</div>';
+               html += '</div>';
+               }
+               html += '</div>';
+               html += '<a class="carousel-control-prev" href="#jewellery_main_slider'+categoryId+'"  class = "jewellery_main_slider"role="button" data-slide="prev">';
+               html += '<i class="fa fa-angle-left"></i>';
+               html += '</a>';
+               html += '<a class="carousel-control-next" href="#jewellery_main_slider'+categoryId+'" class="jewellery_main_slider" role="button" data-slide="next">';
+               html += '<i class="fa fa-angle-right"></i>';
+               html += '</a>';
+               html += '</div>';
+            }
+            $('#main').html(html);
+          },
+          error: function(error) {
+            console.log(error);
+            alert('請求失敗');
+          }
+        });        
+      }         
       </script>
    </body>
 </html>
