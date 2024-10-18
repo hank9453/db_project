@@ -10,6 +10,99 @@ def home():
     return render_template('index.html')
 
 
+@app.route('/Delete_Cart', methods=['POST'])   # Load_Cart
+def Delete_Cart():
+    data = json.loads(request.get_data())
+    con = sqlite3.connect('db.db')
+    cursor = con.cursor()
+    try :
+        cursor.execute("DELETE FROM CartItem WHERE item_id = ?", (data['item_id'],))
+        con.commit()
+        con.close()
+        return jsonify({"message": "Item deleted successfully"})
+    except Exception as e:
+        print(e)
+        return 'error', 400
+
+
+@app.route('/Update_Cart', methods=['POST'])   # Load_Cart
+def Update_Cart():
+    user_id = session['user_id']
+    data = json.loads(request.get_data())
+
+    if 'user_id' not in session:
+        return 'User not logged in', 401
+    con = sqlite3.connect('db.db')
+    cursor = con.cursor()
+    try :
+        cursor.execute("UPDATE CartItem SET quantity = ? WHERE item_id = ?", (data['quantity'], data['item_id']))
+        con.commit()
+        con.close()
+        return jsonify({"message": "Item updated successfully"})
+    except Exception as e:
+        print(e)
+        return 'error', 400
+
+
+
+@app.route('/Add_Cart', methods=['Post'])   # Load_Cart
+def Add_Cart():
+    user_id = session['user_id']
+    data = json.loads(request.get_data())
+
+    if 'user_id' not in session:
+        return 'User not logged in', 401
+    
+    con = sqlite3.connect('db.db')
+    cursor = con.cursor()
+    try :
+        cursor.execute("select cart_id from Cart where user_id=?", (user_id,))
+        result = cursor.fetchone()
+        cart_id = result[0]
+        cursor.execute("SELECT quantity FROM CartItem WHERE cart_id=? AND product_id=?", (cart_id, data['product_id']))
+        item = cursor.fetchone()
+        if item:
+            cursor.execute("UPDATE CartItem SET quantity = quantity + 1 WHERE cart_id=? AND product_id=?", (cart_id, data['product_id']))
+        else:
+            cursor.execute("INSERT INTO CartItem (cart_id, product_id, quantity) VALUES (?, ?, 1)", (cart_id, data['product_id']))
+        con.commit()
+        con.close()
+        return jsonify({"message": "Item added to cart successfully"})
+    except Exception as e:
+        print(e)
+        return 'error', 400
+
+
+
+@app.route('/Load_Cart', methods=['GET'])   # Load_Cart
+def Load_Cart():
+    user_id = session['user_id']
+    if 'user_id' not in session:
+        return 'User not logged in', 401
+    
+    con = sqlite3.connect('db.db')
+    cursor = con.cursor()
+    try :
+        cursor.execute("select cart_id from Cart where user_id=?", (user_id,))
+        result = cursor.fetchone()
+        if result is None:
+            cursor.execute("insert into Cart (user_id) values (?)", (user_id,))
+            con.commit()
+            cursor.execute("select cart_id from Cart where user_id=?", (user_id,))
+            result = cursor.fetchone()
+        cursor.execute("select cart_id from Cart where user_id=?", (user_id,))
+        result = cursor.fetchone()
+        cart_id = result[0]
+        cursor.execute("select item_id, Products.name, price, image, CartItem.quantity from CartItem join Products on CartItem.product_id = Products.id where cart_id=?", (cart_id,))
+        result = cursor.fetchall()
+        con.close()
+        return jsonify(result)
+    except Exception as e:
+        print(e)
+        return 'error', 400
+
+
+
 @app.route('/Search_InStock_Product', methods=['POST'])
 def Search_InStock_Product():
     con = sqlite3.connect('db.db')

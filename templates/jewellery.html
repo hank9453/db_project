@@ -72,9 +72,66 @@
                   <div class="login_menu ml-3">
                       <ul class="d-flex mb-0">
                         <li class="mr-3">
-                           <a href="#">
-                            <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
-                           </a>
+                              <a href="#" data-toggle="modal" data-target="#cartModal">
+                                 <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+                              </a>
+
+                              <!-- Modal -->
+                              <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+                                 <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                       <div class="modal-header">
+                                          <h5 class="modal-title" id="cartModalLabel">購物車</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                             <span aria-hidden="true">&times;</span>
+                                          </button>
+                                       </div>
+                                       <div class="modal-body">
+                                          <div id="cart_show">
+                                             <div class="shopping-cart-content">
+                                               <div class="mini-cart cart-list p-0 mt-3">
+                                                 <div class="mini-cart-item d-flex border-bottom pb-3">
+                                                   <div class="col-lg-2 col-md-3 col-sm-2 me-4">
+                                                     <a href="#" title="product-image">
+                                                       <img src="data:image/jpeg;base64,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" class="img-fluid" alt="single-product-item">
+                                                     </a>
+                                                   </div>
+                                                   <div class="col-lg-9 col-md-8 col-sm-8">
+                                                     <div class="product-header d-flex justify-content-between align-items-center mb-3">
+                                                       <h4 class="product-title fs-6 me-5">Sport Shoes For Men</h4>
+                                                          <a href="" class="remove" aria-label="Remove this item" data-product_id="11913" data-cart_item_key="abc" data-product_sku="" style="color: black; font-size: 2em;">
+                                                              <span aria-hidden="true">&times;</span>
+                                                          </a>
+
+                                                          </a>
+                                                       </a>
+                                                     </div>
+                                                     <div class="quantity-price d-flex justify-content-between align-items-center">
+                                                       <div class="input-group product-qty">
+                                                         <button type="button" class="quantity-left-minus btn btn-light rounded-0 rounded-start btn-number" data-type="minus">-
+                                                         </button>
+                                                         <input type="text" name="quantity" class="form-control input-number quantity" value="1">
+                                                         <button type="button" class="quantity-right-plus btn btn-light rounded-0 rounded-end btn-number" data-type="plus">+
+                                                         </button>
+                                                       </div>
+                                                         <div class="price-code" style="color: black;">
+                                                         <span class="product-price fs-6">$99</span>
+                                                       </div>
+                                                     </div>
+                                                     <!-- quantity-price -->
+                                                   </div>
+                                                 </div>
+                                               </div>
+                                             </div>
+                                           </div>
+                                       </div>
+                                       <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                                          <button type="button" class="btn btn-primary">保存變更</button>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
                         </li>
                         <li>
                            <a href="#">
@@ -105,12 +162,13 @@
       <script src="/static/js/custom.js"></script>
       <script>
          loadpro();
+         Load_Cart();
          function loadpro(){
-        $.ajax({
-          url: 'Load_InStock_Product',
-          type: 'GET',
-          contentType: 'application/json', 
-          success: function(response) {
+         $.ajax({
+            url: 'Load_InStock_Product',
+            type: 'GET',
+            contentType: 'application/json', 
+            success: function(response) {
             var html = '';
             var productsByCategory = {};
             for (var i = 0; i < response.length; i++) {
@@ -139,17 +197,17 @@
                html += '<div class="fashion_section_2">';
                html += '<div class="row">';
                for (var k = j; k < j + 3 && k < items.length; k++) {
-                 var product = items[k];
-                 html += '<div class="col-lg-4 col-sm-4">';
-                 html += '<div class="box_main">';
-                 html += '<h4 class="shirt_text">' + product[1] + '</h4>';
-                 html += '<p class="price_text">Start Price <span style="color: #262626;">$ ' + product[2] + '</span></p>';
-                 html += '<div class="jewellery_img"><img src="' + product[3] + '"></img></div>';
-                 html += '<div class="btn_main">';
-                 html += '<div class="buy_bt"><a href="#">加入購物車</a></div>';
-                 html += '</div>';
-                 html += '</div>';
-                 html += '</div>';
+                  var product = items[k];
+                  html += '<div class="col-lg-4 col-sm-4">';
+                  html += '<div class="box_main">';
+                  html += '<h4 class="shirt_text">' + product[1] + '</h4>';
+                  html += '<p class="price_text">Start Price <span style="color: #262626;">$ ' + product[2] + '</span></p>';
+                  html += '<div class="jewellery_img"><img src="' + product[3] + '"></img></div>';
+                  html += '<div class="btn_main">';
+                  html += '<div class="buy_bt"><a href="#" onclick="Add_Cart(' + product[0] + ')">加入購物車</a></div>';
+                  html += '</div>';
+                  html += '</div>';
+                  html += '</div>';
                }
                html += '</div>';
                html += '</div>';
@@ -168,83 +226,185 @@
 
             $('#main').html(html);
             console.log(response);
-          },
-          error: function(error) {
+            },
+            error: function(error) {
             console.log(error);
             alert('請求失敗');
-          }
-        });        
+            }
+         });        
       }
-      function Search(){
-         var keywords = document.getElementById('keyword').value;
-        $.ajax({
-          url: 'Search_InStock_Product',
-          type: 'POST',
-          contentType: 'application/json',
-          data: JSON.stringify({ keyword: keywords }),
-          success: function(response) {
-            var html = '';
-            var productsByCategory = {};
-            for (var i = 0; i < response.length; i++) {
-               var id = response[i][0];
-               var name = response[i][1];
-               var price = response[i][2];
-               var img = response[i][3];
-               var category = response[i][4];
+         function Search(){
+            var keywords = document.getElementById('keyword').value;
+         $.ajax({
+            url: 'Search_InStock_Product',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ keyword: keywords }),
+            success: function(response) {
+               var html = '';
+               var productsByCategory = {};
+               for (var i = 0; i < response.length; i++) {
+                  var id = response[i][0];
+                  var name = response[i][1];
+                  var price = response[i][2];
+                  var img = response[i][3];
+                  var category = response[i][4];
 
-               if (!productsByCategory[category]) {
-               productsByCategory[category] = [];
+                  if (!productsByCategory[category]) {
+                  productsByCategory[category] = [];
+                  }
+                  productsByCategory[category].push([id, name, price, img]);
                }
-               productsByCategory[category].push([id, name, price, img]);
+               for (var category in productsByCategory) {
+                  var categoryId = category.replace(/\s+/g, '_'); // Replace spaces with underscores for unique IDs
+                  html += '<div>';
+                  html += '<h1 class="fashion_taital">'+category+'</h1>';
+                  html += '</div>';
+                  html += '<div id="jewellery_main_slider'+categoryId+'" class="carousel slide" data-ride="carousel" data-interval="false">';
+                  html += '<div class="carousel-inner">';
+                  var items = productsByCategory[category];
+                  for (var j = 0; j < items.length; j += 3) {
+                  html += '<div class="carousel-item ' + (j === 0 ? 'active' : '') + '">';
+                  html += '<div class="container">';
+                  html += '<div class="fashion_section_2">';
+                  html += '<div class="row">';
+                  for (var k = j; k < j + 3 && k < items.length; k++) {
+                  var product = items[k];
+                  html += '<div class="col-lg-4 col-sm-4">';
+                  html += '<div class="box_main">';
+                  html += '<h4 class="shirt_text">' + product[1] + '</h4>';
+                  html += '<p class="price_text">Start Price <span style="color: #262626;">$ ' + product[2] + '</span></p>';
+                  html += '<div class="jewellery_img"><img src="' + product[3] + '"></img></div>';
+                  html += '<div class="btn_main">';
+                  html += '<div class="buy_bt"><a href="#" onclick="Add_Cart(' + product[0] + ')">加入購物車</a></div>';
+                  html += '</div>';
+                  html += '</div>';
+                  html += '</div>';
+                  }
+                  html += '</div>';
+                  html += '</div>';
+                  html += '</div>';
+                  html += '</div>';
+                  }
+                  html += '</div>';
+                  html += '<a class="carousel-control-prev" href="#jewellery_main_slider'+categoryId+'"  class = "jewellery_main_slider"role="button" data-slide="prev">';
+                  html += '<i class="fa fa-angle-left"></i>';
+                  html += '</a>';
+                  html += '<a class="carousel-control-next" href="#jewellery_main_slider'+categoryId+'" class="jewellery_main_slider" role="button" data-slide="next">';
+                  html += '<i class="fa fa-angle-right"></i>';
+                  html += '</a>';
+                  html += '</div>';
+               }
+               $('#main').html(html);
+            },
+            error: function(error) {
+               console.log(error);
+               alert('請求失敗');
             }
-            for (var category in productsByCategory) {
-               var categoryId = category.replace(/\s+/g, '_'); // Replace spaces with underscores for unique IDs
-               html += '<div>';
-               html += '<h1 class="fashion_taital">'+category+'</h1>';
-               html += '</div>';
-               html += '<div id="jewellery_main_slider'+categoryId+'" class="carousel slide" data-ride="carousel" data-interval="false">';
-               html += '<div class="carousel-inner">';
-               var items = productsByCategory[category];
-               for (var j = 0; j < items.length; j += 3) {
-               html += '<div class="carousel-item ' + (j === 0 ? 'active' : '') + '">';
-               html += '<div class="container">';
-               html += '<div class="fashion_section_2">';
-               html += '<div class="row">';
-               for (var k = j; k < j + 3 && k < items.length; k++) {
-                 var product = items[k];
-                 html += '<div class="col-lg-4 col-sm-4">';
-                 html += '<div class="box_main">';
-                 html += '<h4 class="shirt_text">' + product[1] + '</h4>';
-                 html += '<p class="price_text">Start Price <span style="color: #262626;">$ ' + product[2] + '</span></p>';
-                 html += '<div class="jewellery_img"><img src="' + product[3] + '"></img></div>';
-                 html += '<div class="btn_main">';
-                 html += '<div class="buy_bt"><a href="#"></a></div>';
-                 html += '</div>';
-                 html += '</div>';
-                 html += '</div>';
-               }
-               html += '</div>';
-               html += '</div>';
-               html += '</div>';
-               html += '</div>';
-               }
-               html += '</div>';
-               html += '<a class="carousel-control-prev" href="#jewellery_main_slider'+categoryId+'"  class = "jewellery_main_slider"role="button" data-slide="prev">';
-               html += '<i class="fa fa-angle-left"></i>';
-               html += '</a>';
-               html += '<a class="carousel-control-next" href="#jewellery_main_slider'+categoryId+'" class="jewellery_main_slider" role="button" data-slide="next">';
-               html += '<i class="fa fa-angle-right"></i>';
-               html += '</a>';
-               html += '</div>';
+         });        
+         }         
+         
+         function updateQuantity(id, quantity){
+         var currentQuantity = parseInt($('#quantity-' + id).val());
+         var newQuantity = currentQuantity + quantity;
+         if (newQuantity < 1) {
+            newQuantity = 1;
+         }
+         $('#quantity-' + id).val(newQuantity);
+         $.ajax({
+            url: 'Update_Cart',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ item_id: id, quantity: newQuantity }),
+            success: function(response) {
+               console.log(response);
+               Load_Cart();
+            },
+            error: function(error) {
+               console.log(error);
+               alert('請求失敗');
             }
-            $('#main').html(html);
-          },
-          error: function(error) {
-            console.log(error);
-            alert('請求失敗');
-          }
-        });        
-      }         
+         });        
+         }
+         function deleteitem(id){
+         $.ajax({ 
+            url: 'Delete_Cart',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ item_id: id }),
+            success: function(response) {
+               console.log(response);
+               Load_Cart();
+            },
+            error: function(error) {
+               console.log(error);
+               alert('請求失敗');
+            }});
+         }
+         function Load_Cart(){
+         $.ajax({
+            url: 'Load_Cart',
+            type: 'GET',
+            contentType: 'application/json', 
+            success: function(response) {
+               var html = '';
+               for (var i = 0; i < response.length; i++) {
+                  var id = response[i][0];
+                  var name = response[i][1];
+                  var price = response[i][2];
+                  var img = response[i][3];
+                  var quantity = response[i][4];
+                  html += '<div class="cart-item">';
+                  html += '<div class="row">';
+                  html += '<div class="col-lg-3 col-md-4 col-sm-4">';
+                  html += '<div class="cart-product-item">';
+                  html += '<img src="' + img + '" alt="">';
+                  html += '</div>';
+                  html += '</div>';
+                  html += '<div class="col-lg-9 col-md-8 col-sm-8">';
+                  html += '<div class="product-header d-flex justify-content-between align-items-center mb-3">';
+                  html += '<h4 class="product-title fs-6 me-5">' + name + '</h4>';
+                    html += '<a href="#" class="remove" aria-label="Remove this item" data-product_id="' + id + '" data-cart_item_key="abc" data-product_sku="" style="color: black; font-size: 2em;" onclick="deleteitem(' + id + ')">';
+                  html += '<span aria-hidden="true">&times;</span>';
+                  html += '</a>';
+                  html += '</div>';
+                  html += '<div class="quantity-price d-flex justify-content-between align-items-center">';
+                  html += '<div class="input-group product-qty justify-content-start"> ';
+                  html += '<button type="button" class="quantity-left-minus btn btn-light rounded-0 rounded-start btn-number" data-type="minus" onclick="updateQuantity(' + id + ', -1)">-</button>';
+                    html += '<input type="text" name="quantity" class="form-control input-number quantity" value="' + quantity + '" id="quantity-' + id + '" readonly>';
+                  html += '<button type="button" class="quantity-right-plus btn btn-light rounded-0 rounded-end btn-number" data-type="plus" onclick="updateQuantity(' + id + ', 1)">+</button>';
+                  html += '</div>';
+                  html += '<div class="price-code" style="color: black;">';
+                  html += '<span class="product-price fs-6" style="padding: 20px; display: inline-block; min-width: 100px;">$' + price + '</span>';
+                  html += '</div>';
+                  html += '</div>';
+                  html += '</div>';
+                  html += '</div>';
+                  html += '</div>';
+               }
+               $('#cart_show').html(html);
+            },
+            error: function(error) {
+               console.log(error);
+               alert('請求失敗');
+            }
+         });        
+         }
+         function Add_Cart(id){
+         $.ajax({
+            url: 'Add_Cart',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ product_id: id }),
+            success: function(response) {
+            },
+            error: function(error) {
+               console.log(error);
+               alert('請求失敗');
+            }
+         });        
+         }      
+         
       </script>
    </body>
 </html>
