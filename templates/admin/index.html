@@ -79,101 +79,40 @@
             <div class="row tm-content-row">
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block">
-                        <h2 class="tm-block-title">Latest Hits</h2>
-                        <canvas id="lineChart"></canvas>
+                        <h2 class="tm-block-title">銷售統計</h2>
+                        <canvas id="pieChart"   class="chartjs-render-monitor" width="150" height="150"></canvas>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block">
-                        <h2 class="tm-block-title">Performance</h2>
+                        <h2 class="tm-block-title">最暢銷的商品</h2>
                         <canvas id="barChart"></canvas>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller">
-                        <h2 class="tm-block-title">Storage Information</h2>
+                        <h2 class="tm-block-title">銷售趨勢</h2>
                         <div id="pieChartContainer">
-                            <canvas id="pieChart" class="chartjs-render-monitor" width="200" height="200"></canvas>
+                            <canvas id="lineChart" class="chartjs-render-monitor" ></canvas>
                         </div>                        
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
-                        <h2 class="tm-block-title">Notification List</h2>
-                        <div class="tm-notification-items">
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Jessica</b> and <b>6 others</b> sent you new <a href="#"
-                                            class="tm-notification-link">product updates</a>. Check new orders.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-02.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Oliver Too</b> and <b>6 others</b> sent you existing <a href="#"
-                                            class="tm-notification-link">product updates</a>. Read more reports.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-03.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Victoria</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">order updates</a>. Read order information.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Laura Cute</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product records</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-02.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Samantha</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">order stuffs</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-03.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Sophie</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product updates</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Lily A</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product updates</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-02.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Amara</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product updates</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-03.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Cinthela</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product updates</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                        </div>
+                        <h2 class="tm-block-title">高價值客戶</h2>
+                        <table class="table">
+                            <thead>
+                                <tr> 
+                                    <th scope="col">排名</th>
+                                    <th scope="col">帳號</th>
+                                    <th scope="col">金額</th>
+                                    <th scope="col">訂單數</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customer">
+                            </tbody>
+                            
+                        </table>
                     </div>
                 </div>
                 <div class="col-12 tm-block-col">
@@ -182,198 +121,318 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">ORDER NO.</th>
-                                    <th scope="col">STATUS</th>
-                                    <th scope="col">OPERATORS</th>
-                                    <th scope="col">LOCATION</th>
-                                    <th scope="col">DISTANCE</th>
-                                    <th scope="col">START DATE</th>
-                                    <th scope="col">EST DELIVERY DUE</th>
+                                    <th scope="col">訂單編號</th>
+                                    <th scope="col">訂單狀態</th>
+                                    <th scope="col">目的地</th>
+                                    <th scope="col">付款方式</th>
+                                    <th scope="col">訂單金額</th>
+                                    <th scope="col">訂單時間</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row"><b>#122349</b></th>
-                                    <td>
-                                        <div class="tm-status-circle moving">
-                                        </div>Moving
-                                    </td>
-                                    <td><b>Oliver Trag</b></td>
-                                    <td><b>London, UK</b></td>
-                                    <td><b>485 km</b></td>
-                                    <td>16:00, 12 NOV 2018</td>
-                                    <td>08:00, 18 NOV 2018</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#122348</b></th>
-                                    <td>
-                                        <div class="tm-status-circle pending">
-                                        </div>Pending
-                                    </td>
-                                    <td><b>Jacob Miller</b></td>
-                                    <td><b>London, UK</b></td>
-                                    <td><b>360 km</b></td>
-                                    <td>11:00, 10 NOV 2018</td>
-                                    <td>04:00, 14 NOV 2018</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#122347</b></th>
-                                    <td>
-                                        <div class="tm-status-circle cancelled">
-                                        </div>Cancelled
-                                    </td>
-                                    <td><b>George Wilson</b></td>
-                                    <td><b>London, UK</b></td>
-                                    <td><b>340 km</b></td>
-                                    <td>12:00, 22 NOV 2018</td>
-                                    <td>06:00, 28 NOV 2018</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#122346</b></th>
-                                    <td>
-                                        <div class="tm-status-circle moving">
-                                        </div>Moving
-                                    </td>
-                                    <td><b>William Aung</b></td>
-                                    <td><b>London, UK</b></td>
-                                    <td><b>218 km</b></td>
-                                    <td>15:00, 10 NOV 2018</td>
-                                    <td>09:00, 14 NOV 2018</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#122345</b></th>
-                                    <td>
-                                        <div class="tm-status-circle pending">
-                                        </div>Pending
-                                    </td>
-                                    <td><b>Harry Ryan</b></td>
-                                    <td><b>London, UK</b></td>
-                                    <td><b>280 km</b></td>
-                                    <td>15:00, 11 NOV 2018</td>
-                                    <td>09:00, 17 NOV 2018</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#122344</b></th>
-                                    <td>
-                                        <div class="tm-status-circle pending">
-                                        </div>Pending
-                                    </td>
-                                    <td><b>Michael Jones</b></td>
-                                    <td><b>London, UK</b></td>
-                                    <td><b>218 km</b></td>
-                                    <td>18:00, 12 OCT 2018</td>
-                                    <td>06:00, 18 OCT 2018</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#122343</b></th>
-                                    <td>
-                                        <div class="tm-status-circle moving">
-                                        </div>Moving
-                                    </td>
-                                    <td><b>Timmy Davis</b></td>
-                                    <td><b>London, UK</b></td>
-                                    <td><b>218 km</b></td>
-                                    <td>12:00, 10 OCT 2018</td>
-                                    <td>08:00, 18 OCT 2018</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#122342</b></th>
-                                    <td>
-                                        <div class="tm-status-circle moving">
-                                        </div>Moving
-                                    </td>
-                                    <td><b>Oscar Phyo</b></td>
-                                    <td><b>London, UK</b></td>
-                                    <td><b>420 km</b></td>
-                                    <td>15:30, 06 OCT 2018</td>
-                                    <td>09:30, 16 OCT 2018</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#122341</b></th>
-                                    <td>
-                                        <div class="tm-status-circle moving">
-                                        </div>Moving
-                                    </td>
-                                    <td><b>Charlie Brown</b></td>
-                                    <td><b>London, UK</b></td>
-                                    <td><b>300 km</b></td>
-                                    <td>11:00, 10 OCT 2018</td>
-                                    <td>03:00, 14 OCT 2018</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#122340</b></th>
-                                    <td>
-                                        <div class="tm-status-circle cancelled">
-                                        </div>Cancelled
-                                    </td>
-                                    <td><b>Wilson Cookies</b></td>
-                                    <td><b>London, UK</b></td>
-                                    <td><b>218 km</b></td>
-                                    <td>17:30, 12 OCT 2018</td>
-                                    <td>08:30, 22 OCT 2018</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><b>#122339</b></th>
-                                    <td>
-                                        <div class="tm-status-circle moving">
-                                        </div>Moving
-                                    </td>
-                                    <td><b>Richard Clamon</b></td>
-                                    <td><b>London, UK</b></td>
-                                    <td><b>150 km</b></td>
-                                    <td>15:00, 12 OCT 2018</td>
-                                    <td>09:20, 26 OCT 2018</td>
-                                </tr>
+                            <tbody id="order">
                             </tbody>
+                            
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <footer class="tm-footer row tm-mt-small">
-            <div class="col-12 font-weight-light">
-                <p class="text-center text-white mb-0 px-4 small">
-                    Copyright &copy; <b>2018</b> All rights reserved. 
-                    
-                    Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
-                </p>
-            </div>
-        </footer>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!-- https://jquery.com/download/ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <!-- https://momentjs.com/ -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- http://www.chartjs.org/docs/latest/ -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <!-- https://getbootstrap.com/ -->
-    <script src="https://yourwebsite.com/js/tooplate-scripts.js"></script>
-    <script>
-        Chart.defaults.global.defaultFontColor = 'white';
-        let ctxLine,
-            ctxBar,
-            ctxPie,
-            optionsLine,
-            optionsBar,
-            optionsPie,
-            configLine,
-            configBar,
-            configPie,
-            lineChart;
-        barChart, pieChart;
-        // DOM is ready
-        $(function () {
-            drawLineChart(); // Line Chart
-            drawBarChart(); // Bar Chart
-            drawPieChart(); // Pie Chart
 
-            $(window).resize(function () {
-                updateLineChart();
-                updateBarChart();                
+    <script>
+
+        Sales_By_Category();
+        Top_Selling_Products();
+        loadorder();
+        Sales_By_Date();
+        Top_Customers();
+        function drawLineChart(data) {
+    var ctxLine = document.getElementById('lineChart').getContext('2d');
+    var labels = data.map(item => item[1]);
+    var datasets = {};
+
+    data.forEach(item => {
+        if (!datasets[item[0]]) {
+            datasets[item[0]] = {
+                label: item[0],
+                data: [],
+                borderColor: generateColorFromLabel(item[0]), // 使用固定顏色生成函數
+                fill: false
+            };
+        }
+        datasets[item[0]].data.push(item[2]);
+    });
+
+    var lineChart = new Chart(ctxLine, {
+        type: 'line',
+        data: {
+            labels: labels.filter((value, index, self) => self.indexOf(value) === index),
+            datasets: Object.values(datasets)
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    ticks: {
+                        color: 'white'
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: 'white'
+                    },
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white'
+                    }
+                }
+            }
+        }
+    });
+}
+
+function generateColorFromLabel(label) {
+    // 將label轉換為顏色碼的hash函數
+    var hash = 0;
+    for (var i = 0; i < label.length; i++) {
+        hash = label.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    var color = '#';
+    for (var j = 0; j < 3; j++) {
+        var value = (hash >> (j * 8)) & 0xFF;
+        color += ('00' + value.toString(16)).slice(-2);
+    }
+    return color;
+}
+
+
+
+        function drawPieChart(data) {
+            var ctxPie = document.getElementById('pieChart').getContext('2d');
+            var labels = data.map(item => item[0]);
+            var values = data.map(item => item[1]);
+            var pieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+            labels: labels,
+            datasets: [{
+            data: values,
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+            hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40']
+            }]
+            },
+            options: {
+            responsive: true,
+            plugins: {
+            legend: {
+            display: true, // 顯示圖例
+            labels: {
+                color: 'white' // 設定圖例文字顏色為白色
+            }
+            },
+            tooltip: {
+            bodyFontColor: 'white',
+            titleFontColor: 'white'
+            }
+            }
+            }
             });
-        })
+        }
+
+        function Sales_By_Date(){
+            $.ajax({
+            url: 'Sales_By_Date',
+            type: 'GET',
+            contentType: 'application/json',
+            success: function(response) {
+                drawLineChart(response);
+            },
+            error: function(error) {
+            console.log(error);
+            alert('請求失敗');
+            }
+            });
+        }
+
+        function Top_Selling_Products(){
+            $.ajax({
+            url: 'Top_Selling_Products',
+            type: 'GET',
+            contentType: 'application/json',
+            success: function(response) {
+            drawBoxChart(response);
+            },
+            error: function(error) {
+            console.log(error);
+            alert('請求失敗');
+            }
+            });
+        }
+
+        function drawBoxChart(data) {
+            var ctxBox = document.getElementById('barChart').getContext('2d');
+            var labels = data.map(item => item[0]);
+            var values = data.map(item => item[1]);
+            var backgroundColors = [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)'
+            ];
+            var borderColors = [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)'
+            ];
+            var boxChart = new Chart(ctxBox, {
+            type: 'bar',
+            data: {
+            labels: labels,
+            datasets: [{
+            label: '',
+            data: values,
+            backgroundColor: backgroundColors.slice(0, values.length),
+            borderColor: borderColors.slice(0, values.length),
+            borderWidth: 1
+            }]
+            },
+            options: {
+            responsive: true,
+            scales: {
+            x: { // x 軸配置
+            ticks: {
+                color: 'white', // 設定 x 軸刻度文字為白色
+                font: {
+                size: 14, // 可選：設定字體大小
+                weight: 'bold' // 可選：設定字體粗細
+                }
+            }
+            },
+            y: { // y 軸配置
+            ticks: {
+                color: 'white', // 設定 y 軸刻度文字為白色
+                font: {
+                size: 14,
+                weight: 'bold'
+                }
+            },
+            beginAtZero: true // 可選：y 軸從 0 開始
+            }
+            },
+            legend: {
+            labels: {
+            color: 'white' // 設定圖例文字顏色為白色
+            }
+            },
+            tooltips: {
+            color: 'white', // 設定提示框文字顏色為白色
+            titleFontColor: 'white' // 設定提示框標題顏色為白色
+            }
+            },
+            plugins: {
+            legend: {
+            labels: {
+            color: 'white' // 設定圖例文字顏色為白色
+            }
+            }
+            }
+        });
+        }
+
+        function Sales_By_Category(){
+            $.ajax({
+            url: 'Sales_By_Category',
+            type: 'GET',
+            contentType: 'application/json',
+            success: function(response) {
+                drawPieChart(response);
+            },
+            error: function(error) {
+                console.log(error);
+                alert('請求失敗');
+            }
+            });
+        }
+        
+        function loadorder(){
+        $.ajax({
+          url: 'Load_Orders',
+          type: 'GET',
+          contentType: 'application/json',
+          success: function(response) {
+            let html = '';
+            response.forEach(function(order) {
+              html += '<tr>';
+              html += '<th scope="row"><b>#' + order[0] + '</b></th>';
+              html += '<td>';
+              if (order[4] == '處理中') {
+            html += '<div class="tm-status-circle moving"></div>處理中';
+              } else if (order.status == '運送中') {
+            html += '<div class="tm-status-circle pending"></div>運送中';
+              } else {
+            html += '<div class="tm-status-circle cancelled"></div>取消';
+              }
+              html += '</td>';
+              html += '<td><b>' + order[3] + '</b></td>';
+              html += '<td><b>' + order[2] + '</b></td>';
+              html += '<td><b>' + order[6] + '</b></td>';
+              html += '<td><b>' + order[1] + '</b></td>';
+              html += '</tr>';
+            });
+            $('#order').html(html);
+          },
+          error: function(error) {
+            console.log(error);
+            alert('請求失敗');
+          }
+        });
+          }
+        function Top_Customers(){
+        $.ajax({
+          url: 'Top_Customers',
+          type: 'GET',
+          contentType: 'application/json',
+          success: function(response) {
+            let html = '';
+            response.forEach(function(customer, index) {
+              html += '<tr>';
+              html += '<th scope="row">' + (index + 1) + '</th>';
+              html += '<td>' + customer[0] + '</td>';
+              html += '<td>' + customer[1] + '</td>';
+              html += '<td>' + customer[2] + '</td>';
+              html += '</tr>';
+            });
+            $('#customer').html(html);
+            console.log(response);
+          },
+          error: function(error) {
+            console.log(error);
+            alert('請求失敗');
+          }
+        });
+          }    
+        
     </script>
 </body>
 

@@ -126,8 +126,19 @@
                                            </div>
                                        </div>
                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                                          <button type="button" class="btn btn-primary">保存變更</button>
+                                            <div class="form-group">
+                                              <label for="address">地址</label>
+                                              <input type="text" class="form-control" id="address" placeholder="輸入地址">
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="paymentMethod">付款方法</label>
+                                              <select class="form-control" id="paymentMethod">
+                                                <option value="paypal">行動支付</option>
+                                                <option value="bank_transfer">銀行轉帳</option>
+                                                <option value="credit_card">信用卡</option>
+                                              </select>
+                                            </div>
+                                            <button type="button" onclick="New_Order()" class="btn btn-secondary" data-dismiss="modal">送出訂單</button>
                                        </div>
                                     </div>
                                  </div>
@@ -302,8 +313,7 @@
                alert('請求失敗');
             }
          });        
-         }         
-         
+         }               
          function updateQuantity(id, quantity){
          var currentQuantity = parseInt($('#quantity-' + id).val());
          var newQuantity = currentQuantity + quantity;
@@ -396,7 +406,8 @@
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ product_id: id }),
-            success: function(response) {
+            success: function(response) { 
+               Load_Cart();
             },
             error: function(error) {
                console.log(error);
@@ -404,7 +415,22 @@
             }
          });        
          }      
-         
+         function New_Order(){
+         $.ajax({
+            url: 'New_Order',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ address: $('#address').val(), paymentMethod: $('#paymentMethod').val() }),
+            success: function(response) { 
+               $('#address').val('');
+               Load_Cart();
+            },
+            error: function(error) {
+               console.log(error);
+               alert('請求失敗');
+            }
+         });        
+         }             
       </script>
    </body>
 </html>

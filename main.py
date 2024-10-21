@@ -9,6 +9,172 @@ app.secret_key = '527852785278'  # 設置一個密鑰來加密 session
 def home():
     return render_template('index.html')
 
+@app.route('/Top_Customers', methods=['GET'])
+def Top_Customers():
+    con = sqlite3.connect('db.db')
+    cursor = con.cursor()
+    try:
+        cursor.execute("""
+            SELECT 
+                a.account AS 用戶帳號,
+                SUM(oi.Quantity * oi.Price) AS 總消費金額,
+                COUNT(DISTINCT o.OrderID) AS 訂單數量
+            FROM 
+                "Order" o
+            JOIN 
+                accounts a ON o.UserID = a.id
+            JOIN 
+                OrderItem oi ON o.OrderID = oi.OrderID
+            GROUP BY 
+                a.account
+            ORDER BY 
+                總消費金額 DESC
+
+        """)
+        result = cursor.fetchall()
+        con.close()
+        return jsonify(result)
+    except Exception as e:
+        print(e)
+        return 'error', 400
+@app.route('/Sales_By_Date', methods=['GET'])
+def Sales_By_Date():
+    con = sqlite3.connect('db.db')
+    cursor = con.cursor()
+    try:
+        cursor.execute("""
+            WITH RECURSIVE dates AS (
+                SELECT DATE('now', '-1 month') AS date
+                UNION ALL
+                SELECT DATE(date, '+1 day')
+                FROM dates
+                WHERE date < DATE('now')
+            ),
+            categories AS (
+                SELECT id, name
+                FROM Type
+            ),
+            category_dates AS (
+                SELECT 
+                    c.id AS category_id, 
+                    c.name AS category_name, 
+                    d.date AS sales_date
+                FROM 
+                    categories c
+                CROSS JOIN 
+                    dates d
+            ),
+            sales AS (
+                SELECT 
+                    p.category AS category_id,
+                    DATE(o.OrderDate) AS sales_date,
+                    SUM(oi.Quantity * p.price) AS total_sales
+                FROM 
+                    OrderItem oi
+                JOIN 
+                    Products p ON oi.ProductID = p.id
+                JOIN 
+                    "Order" o ON oi.OrderID = o.OrderID
+                WHERE 
+                    DATE(o.OrderDate) BETWEEN DATE('now', '-1 month') 
+                                            AND DATE('now')
+                GROUP BY 
+                    p.category, 
+                    DATE(o.OrderDate)
+            )
+            SELECT 
+                cd.category_name AS 類別名稱,
+                cd.sales_date AS 銷售日期,
+                COALESCE(s.total_sales, 0) AS 銷售金額
+            FROM 
+                category_dates cd
+            LEFT JOIN 
+                sales s 
+                ON s.category_id = cd.category_id 
+                AND s.sales_date = cd.sales_date
+            ORDER BY 
+                cd.category_name, 
+                cd.sales_date;
+        """)
+        result = cursor.fetchall()
+        con.close()
+        return jsonify(result)
+    except Exception as e:
+        print(e)
+        return 'error', 400
+
+@app.route('/New_Order', methods=['POST'])
+def New_Order():
+    user_id = session['user_id']
+    data = json.loads(request.get_data())
+    con = sqlite3.connect('db.db')
+    cursor = con.cursor()
+    cursor.execute("select cart_id from Cart where user_id=?", (user_id,))
+    result = cursor.fetchone()
+    cart_id = result[0]
+    cursor.execute("select product_id, quantity from CartItem where cart_id=?", (cart_id,))
+    items = cursor.fetchall()
+    cursor.execute('insert into "Order" (UserID, OrderDate, Payment, Location, Status) values (?, date("now"), ?, ?, ?)', (user_id, data['paymentMethod'], data['address'],'處理中'))
+    cursor.execute("select last_insert_rowid()")
+    
+    order_id = cursor.fetchone()[0]
+    for item in items:
+        cursor.execute("select price from Products where id=?", (item[0],))
+        price = cursor.fetchone()[0]
+        print(price)
+        cursor.execute("insert into 'OrderItem'(OrderID, ProductID, Quantity,Price) values (?, ?, ?,?)", (order_id, item[0], item[1], price))
+        cursor.execute("update Products set stock_num = stock_num - ? where id=?", (item[1], item[0]))
+    cursor.execute("delete from CartItem where cart_id=?", (cart_id,))
+    cursor.execute("delete from Cart where cart_id=?", (cart_id,))
+    cursor.execute("insert into Cart (user_id) values (?)", (user_id,))
+    con.commit()
+    con.close()
+    return jsonify({"message": "Order created successfully"})
+
+@app.route('/Top_Selling_Products', methods=['GET'])
+def Top_Selling_Products():
+    con = sqlite3.connect('db.db')
+    cursor = con.cursor()
+    cursor.execute("""
+        SELECT p.name AS 商品名稱, SUM(oi.Quantity) AS 總銷售數量
+        FROM OrderItem oi
+        JOIN Products p ON oi.ProductID = p.id
+        GROUP BY p.name
+        ORDER BY 總銷售數量 DESC
+        LIMIT 10
+    """)
+    result = cursor.fetchall()
+    con.close()
+    return jsonify(result)
+
+
+@app.route('/Sales_By_Category', methods=['GET'])
+def Sales_By_Category():
+    con = sqlite3.connect('db.db')
+    cursor = con.cursor()
+    try:
+        cursor.execute("""
+            SELECT 
+                t.name AS 類別名稱, 
+                SUM(oi.Quantity * p.price) AS 銷售金額
+            FROM 
+                OrderItem oi
+            JOIN 
+                Products p ON oi.ProductID = p.id
+            JOIN 
+                Type t ON p.category = t.id
+            GROUP BY 
+                t.name
+            ORDER BY 
+                銷售金額 DESC
+        """)
+        result = cursor.fetchall()
+        con.close()
+        return jsonify(result)
+    except Exception as e:
+        print(e)
+        return 'error', 400
+
 
 @app.route('/Delete_Cart', methods=['POST'])   # Load_Cart
 def Delete_Cart():
@@ -132,7 +298,26 @@ def Load_InStock_Product():
     except Exception as e:
         print(e)
         return 'error', 400
+@app.route('/Load_Orders', methods=['GET'])
+def Load_Orders():
+    print('Load_Orders')
+    con = sqlite3.connect('db.db')
+    cursor = con.cursor()
+    try :
 
+        cursor.execute("""
+            SELECT o.OrderID, o.OrderDate, o.Payment, o.Location, o.Status, o.UserID, 
+               SUM(oi.Quantity * oi.Price) as TotalAmount
+            FROM 'Order' o
+            JOIN OrderItem oi ON o.OrderID = oi.OrderID
+            GROUP BY o.OrderID, o.OrderDate, o.Payment, o.Location, o.UserID
+        """)
+        result = cursor.fetchall()
+        con.close()
+        return jsonify(result)
+    except Exception as e:
+        print(e)
+        return 'error', 400
 
 
 @app.route('/admin/editpro')
@@ -152,7 +337,6 @@ def Load_One_Product():
     except Exception as e:
         print(e)
         return 'error', 400
-
 
 @app.route('/admin/edit_products', methods=['POST'])
 def edit_one_pro():
